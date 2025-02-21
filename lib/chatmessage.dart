@@ -1,15 +1,16 @@
-import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ChatMessage {
-  final String content;
+  final String text;
   final bool isUser;
-  final String type;
-  final File? file;
+  final XFile? imageFile;
+  final TextStyle textStyle;
 
   ChatMessage({
-    required this.content,
+    required this.text,
     required this.isUser,
-    required this.type,
-    this.file,
+    this.imageFile,
+    required this.textStyle, 
   });
 }
