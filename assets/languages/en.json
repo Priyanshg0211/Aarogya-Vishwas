@@ -1,0 +1,17 @@
+{
+  "appTitle": "Aarogya Vishwas",
+  "reportSummarization": "Report Summarization",
+  "reportDescription": "Get simplified summaries of your medical reports in easy language",
+  "medicalRecordStorage": "Medical Record Storage",
+  "medicalRecordDescription": "Securely save and access your medical reports anytime",
+  "schemeChecker": "Government Scheme Eligibility Checker",
+  "schemeDescription": "Check if you qualify for healthcare schemes provided by the government",
+  "hospitalLocator": "Hospital & Ambulance Locator",
+  "hospitalDescription": "Find nearby hospitals and emergency services with direct call functionality",
+  "firstAidGuide": "Offline First Aid Guide",
+  "firstAidDescription": "Access preloaded life-saving instructions for emergencies like burns, fractures, heart attacks, and more",
+  "volunteerSupport": "Volunteer Support System",
+  "volunteerDescription": "Seek help from trained community health volunteers",
+  "localVolunteer": "Local Volunteer Connection",
+  "localVolunteerDescription": "Locate and contact healthcare volunteers from your village or nearby areas for immediate assistance"
+}

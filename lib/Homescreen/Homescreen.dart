@@ -1,3 +1,4 @@
+import 'package:aarogya_vishwas/localization/app_localization.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -6,11 +7,10 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Aarogya Vishwas',
-          style: TextStyle(fontFamily: 'Product Sans Medium', fontSize: 18),
+          AppLocalizations.of(context)!.translate('appTitle'),
         ),
         centerTitle: true,
-        backgroundColor: Colors.teal, // A calming and professional color
+        backgroundColor: Colors.teal,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
@@ -18,68 +18,68 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _buildFeatureCard(
+              context: context,
               icon: Icons.summarize,
-              title: 'GenAI Powered Report Summarization',
-              description:
-                  'Upload medical reports and get an easy-to-understand summary in your preferred language.',
+              title: 'reportSummarization',
+              description: 'reportDescription',
               onTap: () {},
             ),
             SizedBox(height: 16.0),
             _buildFeatureCard(
+              context: context,
               icon: Icons.medical_services,
-              title: 'Medical Record Storage',
-              description:
-                  'Securely save and access your medical reports anytime.',
+              title: 'medicalRecordStorage',
+              description: 'medicalRecordDescription',
               onTap: () {
                 // Navigate to the medical record storage screen
               },
             ),
             SizedBox(height: 16.0),
             _buildFeatureCard(
+              context: context,
               icon: Icons.assignment_turned_in,
-              title: 'Government Scheme Eligibility Checker',
-              description:
-                  'Check if you qualify for healthcare schemes provided by the government.',
+              title: 'schemeChecker',
+              description: 'schemeDescription',
               onTap: () {
                 // Navigate to the eligibility checker screen
               },
             ),
             SizedBox(height: 16.0),
             _buildFeatureCard(
+              context: context,
               icon: Icons.local_hospital,
-              title: 'Hospital & Ambulance Locator',
-              description:
-                  'Find nearby hospitals and emergency services with direct call functionality.',
+              title: 'hospitalLocator',
+              description: 'hospitalDescription',
               onTap: () {
                 // Navigate to the hospital locator screen
               },
             ),
             SizedBox(height: 16.0),
             _buildFeatureCard(
+              context: context,
               icon: Icons.medical_information,
-              title: 'Offline First Aid Guide',
-              description:
-                  'Access preloaded life-saving instructions for emergencies like burns, fractures, heart attacks, and more.',
+              title: 'firstAidGuide',
+              description: 'firstAidDescription',
               onTap: () {
                 // Navigate to the first aid guide screen
               },
             ),
             SizedBox(height: 16.0),
             _buildFeatureCard(
+              context: context,
               icon: Icons.people,
-              title: 'Volunteer Support System',
-              description:
-                  'Seek help from trained community health volunteers.',
+              title: 'volunteerSupport',
+              description: 'volunteerDescription',
               onTap: () {
                 // Navigate to the volunteer support screen
               },
             ),
             SizedBox(height: 16.0),
             _buildFeatureCard(
+              context: context,
               icon: Icons.location_on,
-              title: 'Local Volunteer Connection',
-              description:
-                  'Locate and contact healthcare volunteers from your village or nearby areas for immediate assistance.',
+              title: 'localVolunteer',
+              description: 'localVolunteerDescription',
               onTap: () {
                 // Navigate to the local volunteer connection screen
               },
@@ -91,6 +91,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildFeatureCard({
+    required BuildContext context,
     required IconData icon,
     required String title,
     required String description,
@@ -112,7 +113,7 @@ class HomeScreen extends StatelessWidget {
               Icon(icon, size: 40.0, color: Colors.teal),
               SizedBox(height: 8.0),
               Text(
-                title,
+                AppLocalizations.of(context)!.translate(title),
                 style: TextStyle(
                   fontFamily: 'Product Sans Medium',
                   fontSize: 18.0,
@@ -121,12 +122,13 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: 8.0),
               Text(
-                description,
+                AppLocalizations.of(context)!.translate(description),
                 style: TextStyle(
-                    fontFamily: 'Product Sans Medium',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: Colors.grey[600]),
+                  fontFamily: 'Product Sans Medium',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
+                  color: Colors.grey[600],
+                ),
               ),
             ],
           ),
