@@ -24,8 +24,7 @@ class _DriveScreenState extends State<DriveScreen> {
   @override
   void initState() {
     super.initState();
-    userEmail =
-        FirebaseAuth.instance.currentUser?.email ?? ''; // Set user email
+    userEmail = FirebaseAuth.instance.currentUser?.email ?? ''; // Set user email
     _loadUploadedDocs();
   }
 
@@ -58,8 +57,9 @@ class _DriveScreenState extends State<DriveScreen> {
         await _supabase.storage.from('user_documents').upload(filePath, file);
 
         // Get the file URL
-        final String fileUrl =
-            _supabase.storage.from('user_documents').getPublicUrl(filePath);
+        final String fileUrl = _supabase.storage
+            .from('user_documents')
+            .getPublicUrl(filePath);
 
         // Save metadata to Firestore
         await _firestore
@@ -173,32 +173,35 @@ class _DriveScreenState extends State<DriveScreen> {
       ),
       body: uploadedDocs.isEmpty
           ? Center(child: Text('No files uploaded yet.'))
-          : isGridView
-              ? GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 8,
-                    mainAxisSpacing: 8,
-                  ),
-                  padding: EdgeInsets.all(8),
-                  itemCount: uploadedDocs.length,
-                  itemBuilder: (context, index) {
-                    return _buildFileItem(uploadedDocs[index]);
-                  },
-                )
-              : ListView.builder(
-                  padding: EdgeInsets.all(8),
-                  itemCount: uploadedDocs.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: _buildFileItem(uploadedDocs[index]),
-                      title: Text(uploadedDocs[index]['name']),
-                      subtitle: Text(
-                          'Uploaded on ${uploadedDocs[index]['uploaded_at'].toDate().toString()}'),
-                      onTap: () => _openFile(uploadedDocs[index]),
-                    );
-                  },
-                ),
+          : RefreshIndicator(
+              onRefresh: _loadUploadedDocs, // Refresh function
+              child: isGridView
+                  ? GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 8,
+                        mainAxisSpacing: 8,
+                      ),
+                      padding: EdgeInsets.all(8),
+                      itemCount: uploadedDocs.length,
+                      itemBuilder: (context, index) {
+                        return _buildFileItem(uploadedDocs[index]);
+                      },
+                    )
+                  : ListView.builder(
+                      padding: EdgeInsets.all(8),
+                      itemCount: uploadedDocs.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          leading: _buildFileItem(uploadedDocs[index]),
+                          title: Text(uploadedDocs[index]['name']),
+                          subtitle: Text(
+                              'Uploaded on ${uploadedDocs[index]['uploaded_at'].toDate().toString()}'),
+                          onTap: () => _openFile(uploadedDocs[index]),
+                        );
+                      },
+                    ),
+            ),
     );
   }
 }
