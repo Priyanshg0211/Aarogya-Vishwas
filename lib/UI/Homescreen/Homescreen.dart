@@ -1,5 +1,6 @@
 import 'package:aarogya_vishwas/Feature/AI%20model/widget/ModelUI.dart';
 import 'package:aarogya_vishwas/Feature/CloudStorage/cloudstorage.dart';
+import 'package:aarogya_vishwas/Feature/govermentscheme/govermentscheme.dart';
 import 'package:aarogya_vishwas/UI/Profile/Profilepage.dart';
 import 'package:aarogya_vishwas/localization/app_localization.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,8 @@ class HomeScreen extends StatelessWidget {
               title: 'schemeChecker',
               description: 'schemeDescription',
               onTap: () {
-                // Navigate to the eligibility checker screen
+                 Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => GovernmentSchemesPage()));
               },
             ),
             SizedBox(height: 16.0),
