@@ -1,3 +1,4 @@
+import 'package:aarogya_vishwas/Feature/Homescreen/Homescreen.dart';
 import 'package:aarogya_vishwas/Feature/splashscreen/Splashscreen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Medical Report Analysis',
-      home: Splashscreen(),
+      home: HomeScreen(),
     );
   }
 }

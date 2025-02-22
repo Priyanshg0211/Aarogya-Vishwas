@@ -141,17 +141,17 @@ If applicable, mention if further clinical correlation is required.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
           "Aarogya Vishwas",
           style: TextStyle(
-            fontFamily: 'SofiaPro',
+            fontFamily: 'Product Sans Medium',
             fontSize: 20,
-            color: Colors.white,
+            color: Colors.black,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -201,7 +201,7 @@ If applicable, mention if further clinical correlation is required.
                       'Generating Report Summary....',
                       style: TextStyle(
                         color: Colors.white,
-                        fontFamily: 'SofiaPro',
+                        fontFamily: 'Product Sans',
                         fontSize: 16,
                       ),
                     ),
@@ -325,7 +325,7 @@ If applicable, mention if further clinical correlation is required.
                   color: Colors.white54,
                 ),
                 filled: true,
-                fillColor: Colors.grey[900],
+                fillColor: Colors.grey[600],
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20.0),
                   borderSide: BorderSide.none,
@@ -344,22 +344,22 @@ If applicable, mention if further clinical correlation is required.
                 prefixIcon: IconButton(
                   icon: Icon(
                     Icons.image,
-                    color: Color(0xFFFFB13D),
+                    color: Colors.black,
                   ),
                   onPressed: _sendMediaMessage,
                 ),
                 suffixIcon: IconButton(
                   icon: Icon(
                     Icons.send,
-                    color: Color(0xFFFFB13D),
+                    color: Colors.black,
                   ),
                   onPressed: () => _handleSubmitted(_textController.text),
                 ),
               ),
               style: TextStyle(
-                fontFamily: 'SofiaPro',
+                fontFamily: 'Product Sans Medium',
                 fontWeight: FontWeight.w400,
-                color: Colors.white,
+                color: Colors.black,
               ),
               onSubmitted: (_) => _handleSubmitted(_textController.text),
             ),
