@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:aarogya_vishwas/Feature/AI%20model/widget/chatmessage.dart';
 import 'package:aarogya_vishwas/Feature/AI%20model/Constant/apiservice.dart';
+import 'package:aarogya_vishwas/localization/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:image_picker/image_picker.dart';
@@ -80,7 +81,7 @@ class _HomePageState extends State<HomePage> {
           );
 
           _addMessage(ChatMessage(
-            text: "Summarize the medical Report",
+            text: AppLocalizations.of(context)!.translate('summarizeMedicalReport'),
             isUser: true,
             imageFile: file,
             textStyle: messageTextStyle,
@@ -147,7 +148,7 @@ If applicable, mention if further clinical correlation is required.
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          "Aarogya Vishwas",
+          AppLocalizations.of(context)!.translate('appTitle'), // Localized title
           style: TextStyle(
             fontFamily: 'Product Sans Medium',
             fontSize: 20,
@@ -159,6 +160,7 @@ If applicable, mention if further clinical correlation is required.
           IconButton(
             icon: Icon(Icons.logout),
             onPressed: () {
+              // Add logout functionality
             },
           ),
         ],
@@ -198,7 +200,7 @@ If applicable, mention if further clinical correlation is required.
                   children: [
                     SizedBox(height: 16),
                     Text(
-                      'Generating Report Summary....',
+                      AppLocalizations.of(context)!.translate('generatingReportSummary'), // Localized text
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'Product Sans',
@@ -318,7 +320,7 @@ If applicable, mention if further clinical correlation is required.
               cursorColor: Colors.white,
               controller: _textController,
               decoration: InputDecoration(
-                hintText: "Send a message",
+                hintText: AppLocalizations.of(context)!.translate('sendMessage'), // Localized hint text
                 hintStyle: TextStyle(
                   fontFamily: 'SofiaPro',
                   fontWeight: FontWeight.w400,

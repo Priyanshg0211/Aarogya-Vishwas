@@ -1,3 +1,5 @@
+import 'package:aarogya_vishwas/Feature/AI%20model/widget/ModelUI.dart';
+import 'package:aarogya_vishwas/Homescreen/selectlanguage.dart';
 import 'package:aarogya_vishwas/localization/app_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,21 @@ class HomeScreen extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: Colors.teal,
+        actions: [
+          // Profile Icon to change language
+          IconButton(
+            icon: Icon(Icons.person, color: Colors.white), // Profile icon
+            onPressed: () {
+              // Navigate to the LanguageSelectionScreen
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LanguageSelectionScreen(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
@@ -22,7 +39,10 @@ class HomeScreen extends StatelessWidget {
               icon: Icons.summarize,
               title: 'reportSummarization',
               description: 'reportDescription',
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => HomePage()));
+              },
             ),
             SizedBox(height: 16.0),
             _buildFeatureCard(
