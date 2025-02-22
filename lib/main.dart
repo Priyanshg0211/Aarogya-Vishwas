@@ -1,5 +1,6 @@
 // main.dart
 import 'package:aarogya_vishwas/Homescreen/Homescreen.dart';
+import 'package:aarogya_vishwas/Homescreen/onboardingscreen.dart';
 import 'package:aarogya_vishwas/Homescreen/selectlanguage.dart';
 import 'package:aarogya_vishwas/localization/app_localization.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: locale == null ? LanguageSelectionScreen() : HomeScreen(),
+      home: locale == null ? LanguageSelectionScreen() : OnboardingScreen(),
     );
   }
 }

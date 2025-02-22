@@ -30,5 +30,15 @@
   "noInternet": "इंटरनेट कनेक्शन नहीं है",
   "checkConnection": "कनेक्शन जांचें",
   "welcomeMessage": "आरोग्य विश्वास में आपका स्वागत है",
-  "getStarted": "शुरू करें"
+  "getStarted": "शुरू करें",
+  "welcome": "आरोग्य विश्वास में आपका स्वागत है",
+  "title": "Government Healthcare Schemes",
+  "description": "Check your eligibility and learn how to avail government healthcare benefits.",
+  "title1": "अपनी चिकित्सा रिपोर्ट को अपनी भाषा में समझें",
+  "title2": "जब आपको सबसे अधिक आवश्यकता हो तब ऑफ़लाइन प्राथमिक चिकित्सा मार्गदर्शन प्राप्त करें",
+  "title3": "आरोग्य विश्वास में आपका स्वागत है, आपका निजी चिकित्सा सहायक",
+  "get_started": "शुरू करें",
+  "by_continuing": "जारी रखने पर, आप सहमत होते हैं कि आपने हमारे",
+  "terms_and_conditions": "नियम और शर्तें",
+  "privacy_policy": "गोपनीयता नीति"
 }
