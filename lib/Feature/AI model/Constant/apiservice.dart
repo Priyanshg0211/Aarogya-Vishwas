@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:aarogya_vishwas/chatmessage.dart';
+import 'package:aarogya_vishwas/Feature/AI%20model/widget/chatmessage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';

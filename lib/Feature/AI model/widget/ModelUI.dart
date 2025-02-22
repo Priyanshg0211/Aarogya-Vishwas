@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:aarogya_vishwas/chatmessage.dart';
-import 'package:aarogya_vishwas/const.dart';
+import 'package:aarogya_vishwas/Feature/AI%20model/widget/chatmessage.dart';
+import 'package:aarogya_vishwas/Feature/AI%20model/Constant/apiservice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:image_picker/image_picker.dart';

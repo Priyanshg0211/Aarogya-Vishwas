@@ -1,4 +1,5 @@
-import 'package:aarogya_vishwas/homepage.dart';
+import 'package:aarogya_vishwas/Feature/AI%20model/widget/ModelUI.dart';
+import 'package:aarogya_vishwas/Feature/splashscreen/Splashscreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,10 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Medical Report Analysis',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
+      home: Splashscreen(),
     );
   }
 }
