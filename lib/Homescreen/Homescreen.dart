@@ -1,4 +1,5 @@
 import 'package:aarogya_vishwas/Feature/AI%20model/widget/ModelUI.dart';
+import 'package:aarogya_vishwas/Homescreen/Profilepage.dart';
 import 'package:aarogya_vishwas/Homescreen/selectlanguage.dart';
 import 'package:aarogya_vishwas/localization/app_localization.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => LanguageSelectionScreen(),
+                  builder: (context) => Profilepage(),
                 ),
               );
             },

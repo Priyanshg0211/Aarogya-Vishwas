@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1057166773337",
+    "project_id": "aarogayavishwas",
+    "storage_bucket": "aarogayavishwas.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057166773337:android:186a22f1fc21327446f548",
+        "android_client_info": {
+          "package_name": "com.example.aarogya_vishwas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCssr54BVQ4K8fnjR_vejY18oDSRRvS1kc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
