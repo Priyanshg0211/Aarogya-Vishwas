@@ -1,6 +1,6 @@
+import 'package:aarogya_vishwas/UI/Homescreen/Homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class GovernmentSchemesPage extends StatefulWidget {
   @override
@@ -60,7 +60,8 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
       'description':
           'Aims to immunize children and pregnant women against vaccine-preventable diseases.',
       'eligibility': 'Children and pregnant women.',
-      'image': 'https://www.nhp.gov.in/sites/default/files/mission_indradhanush_logo.png',
+      'image':
+          'https://www.nhp.gov.in/sites/default/files/mission_indradhanush_logo.png',
       'link': 'https://www.nhp.gov.in/mission-indradhanush_pg',
       'category': 'Children',
     },
@@ -78,7 +79,8 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
       'description':
           'Aims to improve nutritional outcomes for children, pregnant women, and lactating mothers.',
       'eligibility': 'Children, pregnant women, and lactating mothers.',
-      'image': 'https://www.nhp.gov.in/sites/default/files/poshan_abhiyaan_logo.png',
+      'image':
+          'https://www.nhp.gov.in/sites/default/files/poshan_abhiyaan_logo.png',
       'link': 'https://www.nhp.gov.in/poshan-abhiyaan_pg',
       'category': 'Children',
     },
@@ -87,7 +89,7 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
       'description':
           'Provides health insurance coverage of up to ₹5 lakh per family per year for secondary and tertiary care hospitalization.',
       'eligibility': 'Families living below the poverty line.',
-      'image': 'https://www.pmjay.gov.in/sites/default/files/pmjay_logo.png',
+      'image': 'assets/images/government-of-india.jpg',
       'link': 'https://www.pmjay.gov.in/',
       'category': 'Health',
     },
@@ -115,10 +117,26 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Government Health Schemes'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back), // Back icon
+          onPressed: () {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => HomeScreen())); // Navigate back
+          },
+        ),
+        title: Text(
+          'Government Health Schemes',
+          style: TextStyle(
+            fontFamily: 'Product Sans Medium',
+            fontSize: 20,
+          ),
+        ),
+        backgroundColor: Colors.teal,
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.search, color: Colors.white),
             onPressed: () {
               showSearch(
                 context: context,
@@ -128,85 +146,135 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(8),
-            child: DropdownButton<String>(
-              value: selectedCategory,
-              items: [
-                'All',
-                'Health',
-                'Women',
-                'Children',
-              ].map((String category) {
-                return DropdownMenuItem<String>(
-                  value: category,
-                  child: Text(category),
-                );
-              }).toList(),
-              onChanged: (String? newValue) {
-                setState(() {
-                  selectedCategory = newValue!;
-                });
-              },
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.blue.shade50, Colors.white],
           ),
-          Expanded(
-            child: RefreshIndicator(
-              onRefresh: () async {
-                // Simulate fetching new data
-                await Future.delayed(Duration(seconds: 2));
-                setState(() {});
-              },
-              child: ListView.builder(
-                padding: EdgeInsets.all(8),
-                itemCount: filteredSchemes.length,
-                itemBuilder: (context, index) {
-                  final scheme = filteredSchemes[index];
-                  return Card(
-                    elevation: 4,
-                    margin: EdgeInsets.symmetric(vertical: 8),
-                    child: ListTile(
-                      leading: CachedNetworkImage(
-                        imageUrl: scheme['image'],
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
-                        placeholder: (context, url) => CircularProgressIndicator(),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                      ),
-                      title: Text(scheme['title']),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(scheme['description']),
-                          SizedBox(height: 4),
-                          Text(
-                            'Eligibility: ${scheme['eligibility']}',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      trailing: IconButton(
-                        icon: Icon(Icons.arrow_forward),
-                        onPressed: () async {
-                          if (await canLaunch(scheme['link'])) {
-                            await launch(scheme['link']);
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Could not open link')),
-                            );
-                          }
-                        },
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: DropdownButton<String>(
+                value: selectedCategory,
+                items: [
+                  'All',
+                  'Health',
+                  'Women',
+                  'Children',
+                ].map((String category) {
+                  return DropdownMenuItem<String>(
+                    value: category,
+                    child: Text(
+                      category,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.blue.shade800,
                       ),
                     ),
                   );
+                }).toList(),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    selectedCategory = newValue!;
+                  });
                 },
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.blue.shade800,
+                ),
+                dropdownColor: Colors.white,
+                icon: Icon(Icons.arrow_drop_down, color: Colors.blue.shade800),
+                underline: Container(
+                  height: 2,
+                  color: Colors.blue.shade800,
+                ),
               ),
             ),
-          ),
-        ],
+            Expanded(
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  // Simulate fetching new data
+                  await Future.delayed(Duration(seconds: 2));
+                  setState(() {});
+                },
+                child: ListView.builder(
+                  padding: EdgeInsets.all(8),
+                  itemCount: filteredSchemes.length,
+                  itemBuilder: (context, index) {
+                    final scheme = filteredSchemes[index];
+                    return Card(
+                      elevation: 4,
+                      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: ListTile(
+                        leading: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.network(
+                            scheme['image'],
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Image.asset(
+                                'assets/images/government-of-india.jpg',
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                              );
+                            },
+                          ),
+                        ),
+                        title: Text(
+                          scheme['title'],
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              scheme['description'],
+                              style: TextStyle(fontSize: 14),
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              'Eligibility: ${scheme['eligibility']}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                        trailing: IconButton(
+                          icon: Icon(Icons.arrow_forward,
+                              color: Colors.blue.shade800),
+                          onPressed: () async {
+                            if (await canLaunch(scheme['link'])) {
+                              await launch(scheme['link']);
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text('Could not open link')),
+                              );
+                            }
+                          },
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
