@@ -1,3 +1,5 @@
+import 'package:aarogya_vishwas/Feature/CloudStorage/ImageViewerScreen.dart';
+import 'package:aarogya_vishwas/Feature/CloudStorage/PdfViewerScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -5,7 +7,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:io';
-import 'package:firebase_auth/firebase_auth.dart'; // Add Firebase Auth
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DriveScreen extends StatefulWidget {
   @override
@@ -22,7 +24,8 @@ class _DriveScreenState extends State<DriveScreen> {
   @override
   void initState() {
     super.initState();
-    userEmail = FirebaseAuth.instance.currentUser?.email ?? ''; // Set user email
+    userEmail =
+        FirebaseAuth.instance.currentUser?.email ?? ''; // Set user email
     _loadUploadedDocs();
   }
 
@@ -55,9 +58,8 @@ class _DriveScreenState extends State<DriveScreen> {
         await _supabase.storage.from('user_documents').upload(filePath, file);
 
         // Get the file URL
-        final String fileUrl = _supabase.storage
-            .from('user_documents')
-            .getPublicUrl(filePath);
+        final String fileUrl =
+            _supabase.storage.from('user_documents').getPublicUrl(filePath);
 
         // Save metadata to Firestore
         await _firestore
@@ -87,13 +89,35 @@ class _DriveScreenState extends State<DriveScreen> {
     });
   }
 
-  void _openFile(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Could not open file')),
+  void _openFile(Map<String, dynamic> doc) async {
+    final String fileUrl = doc['url'];
+    final String fileType = doc['type'];
+
+    if (fileType == 'pdf') {
+      // Open PDF in PDF Viewer
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PdfViewerScreen(pdfUrl: fileUrl),
+        ),
       );
+    } else if (fileType == 'jpg' || fileType == 'png') {
+      // Open Image in Image Viewer
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ImageViewerScreen(imageUrl: fileUrl),
+        ),
+      );
+    } else {
+      // Open other files in a browser
+      if (await canLaunch(fileUrl)) {
+        await launch(fileUrl);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Could not open file')),
+        );
+      }
     }
   }
 
@@ -103,7 +127,7 @@ class _DriveScreenState extends State<DriveScreen> {
     final String fileType = doc['type'];
 
     return GestureDetector(
-      onTap: () => _openFile(fileUrl),
+      onTap: () => _openFile(doc), // Pass the entire document
       child: Card(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -169,8 +193,9 @@ class _DriveScreenState extends State<DriveScreen> {
                     return ListTile(
                       leading: _buildFileItem(uploadedDocs[index]),
                       title: Text(uploadedDocs[index]['name']),
-                      subtitle: Text('Uploaded on ${uploadedDocs[index]['uploaded_at'].toDate().toString()}'),
-                      onTap: () => _openFile(uploadedDocs[index]['url']),
+                      subtitle: Text(
+                          'Uploaded on ${uploadedDocs[index]['uploaded_at'].toDate().toString()}'),
+                      onTap: () => _openFile(uploadedDocs[index]),
                     );
                   },
                 ),
