@@ -1,4 +1,3 @@
-import 'package:aarogya_vishwas/Feature/AI%20model/widget/ModelUI.dart';
 import 'package:aarogya_vishwas/Feature/splashscreen/Splashscreen.dart';
 import 'package:flutter/material.dart';
 
