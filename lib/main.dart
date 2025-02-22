@@ -1,29 +1,50 @@
-import 'package:aarogya_vishwas/Homescreen/onboardingscreen.dart';
-import 'package:aarogya_vishwas/Homescreen/selectlanguage.dart';
 import 'package:aarogya_vishwas/firebase_options.dart';
 import 'package:aarogya_vishwas/localization/app_localization.dart';
+import 'package:aarogya_vishwas/UI/splashscreen/Splashscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:firebase_core/firebase_core.dart'; // Add this import
+import 'package:firebase_core/firebase_core.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
-  // Ensure Flutter binding is initialized
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Initialize Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  // Run the app
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  final Locale? locale;
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
-  const MyApp({this.locale, Key? key}) : super(key: key);
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale? _locale;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedLocale();
+  }
+
+  Future<void> _loadSavedLocale() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? languageCode = prefs.getString('languageCode');
+    if (languageCode != null) {
+      setState(() {
+        _locale = Locale(languageCode);
+      });
+    }
+  }
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +55,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
         fontFamily: 'Product Sans Medium',
       ),
-      locale: locale,
-      supportedLocales: [
+      locale: _locale,
+      supportedLocales: const [
         Locale('en', 'US'),
         Locale('hi', 'IN'),
         Locale('bn', 'BD'),
@@ -49,13 +70,13 @@ class MyApp extends StatelessWidget {
         Locale('ml', 'IN'),
         Locale('ur', 'PK'),
       ],
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: locale == null ? LanguageSelectionScreen() : OnboardingScreen(),
+      home: Splashscreen(onLocaleChange: setLocale),
     );
   }
 }

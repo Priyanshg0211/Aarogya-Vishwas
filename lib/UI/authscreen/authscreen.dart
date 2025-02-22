@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:aarogya_vishwas/Homescreen/Homescreen.dart'; // Import the HomeScreen
+import 'package:aarogya_vishwas/UI/Homescreen/Homescreen.dart'; // Import the HomeScreen
 
 class AuthScreen extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;

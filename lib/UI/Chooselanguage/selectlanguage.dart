@@ -1,11 +1,17 @@
-import 'package:aarogya_vishwas/main.dart';
+import 'package:aarogya_vishwas/UI/Onboarding/onboardingscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LanguageSelectionScreen extends StatefulWidget {
+  final Function(Locale) onLocaleChange;
+
+  const LanguageSelectionScreen({
+    Key? key,
+    required this.onLocaleChange,
+  }) : super(key: key);
+
   @override
-  _LanguageSelectionScreenState createState() =>
-      _LanguageSelectionScreenState();
+  _LanguageSelectionScreenState createState() => _LanguageSelectionScreenState();
 }
 
 class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
@@ -33,17 +39,28 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
   }
 
   Future<void> _loadSelectedLanguage() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final prefs = await SharedPreferences.getInstance();
     setState(() {
       _selectedLanguageCode = prefs.getString('languageCode');
     });
+  }
+
+  Future<void> _selectLanguage(String languageCode) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('languageCode', languageCode);
+    
+    setState(() {
+      _selectedLanguageCode = languageCode;
+    });
+    
+    widget.onLocaleChange(Locale(languageCode));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Choose Language'),
+        title: const Text('Choose Language'),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
@@ -51,33 +68,22 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
         children: [
           Expanded(
             child: ListView(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               children: languages.entries.map((entry) {
                 return ListTile(
                   title: Text(entry.key),
                   trailing: _selectedLanguageCode == entry.value
-                      ? Icon(Icons.check,
-                          color: Colors.teal) // Show tick if selected
-                      : null, // No tick if not selected
-                  onTap: () async {
-                    // Save the selected language code to shared preferences
-                    SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
-                    await prefs.setString('languageCode', entry.value);
-
-                    // Update the UI to show the tick
-                    setState(() {
-                      _selectedLanguageCode = entry.value;
-                    });
-                  },
+                      ? const Icon(Icons.check, color: Colors.teal)
+                      : null,
+                  onTap: () => _selectLanguage(entry.value),
                 );
               }).toList(),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Container(
-              width: MediaQuery.sizeOf(context).width * 0.9,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.9,
               height: 60,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -92,18 +98,19 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                 onPressed: _selectedLanguageCode == null
                     ? null
                     : () {
-                        // Navigate to the home screen with the selected language
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                MyApp(locale: Locale(_selectedLanguageCode!)),
+                            builder: (context) => OnboardingScreen(
+                              locale: Locale(_selectedLanguageCode!),
+                              onLocaleChange: widget.onLocaleChange,
+                            ),
                           ),
                         );
                       },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       'Confirm',
                       style: TextStyle(

@@ -1,6 +1,5 @@
 import 'package:aarogya_vishwas/Feature/AI%20model/widget/ModelUI.dart';
-import 'package:aarogya_vishwas/Homescreen/Profilepage.dart';
-import 'package:aarogya_vishwas/Homescreen/selectlanguage.dart';
+import 'package:aarogya_vishwas/UI/Profile/Profilepage.dart';
 import 'package:aarogya_vishwas/localization/app_localization.dart';
 import 'package:flutter/material.dart';
 

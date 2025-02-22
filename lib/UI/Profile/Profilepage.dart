@@ -43,8 +43,30 @@ class _ProfilepageState extends State<Profilepage> {
 
   // Logout function
   Future<void> _logout(BuildContext context) async {
-    await _auth.signOut();
-    Navigator.pushReplacementNamed(context, '/auth'); // Navigate to AuthScreen
+    try {
+      final User? user = _auth.currentUser;
+      if (user != null) {
+        await _auth.signOut(); // Sign out the user
+        print('User signed out successfully');
+        Navigator.pushReplacementNamed(context, '/auth'); // Navigate to AuthScreen
+      } else {
+        print('No user is currently signed in');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('No user is currently signed in.'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } catch (e) {
+      print('Error during logout: $e'); // Log the error
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Failed to logout. Please try again.'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 
   @override
@@ -58,7 +80,7 @@ class _ProfilepageState extends State<Profilepage> {
         backgroundColor: Colors.teal,
       ),
       body: Padding(
-        padding:  EdgeInsets.only(top: 40),
+        padding: EdgeInsets.only(top: 40),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -71,7 +93,7 @@ class _ProfilepageState extends State<Profilepage> {
                     : AssetImage('assets/default_profile.png') as ImageProvider,
               ),
               SizedBox(height: 20),
-          
+
               // Display Name
               Text(
                 _displayName ?? 'Loading...',
@@ -81,7 +103,7 @@ class _ProfilepageState extends State<Profilepage> {
                 ),
               ),
               SizedBox(height: 10),
-          
+
               // Email
               Text(
                 _email ?? 'Loading...',
@@ -91,7 +113,7 @@ class _ProfilepageState extends State<Profilepage> {
                 ),
               ),
               SizedBox(height: 40),
-          
+
               // Logout Button
               ElevatedButton(
                 onPressed: () => _logout(context),
