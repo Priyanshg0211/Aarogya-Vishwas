@@ -5,10 +5,12 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   app_links
   cloud_firestore
+  connectivity_plus
   file_selector_windows
   firebase_auth
   firebase_core
   flutter_inappwebview_windows
+  flutter_tts
   pdfx
   permission_handler_windows
   url_launcher_windows
