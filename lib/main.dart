@@ -5,11 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart'; 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await Supabase.initialize(
+    url: 'https://qkwvraqegdlxenrrzzbn.supabase.co', // Replace with your Supabase URL
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFrd3ZyYXFlZ2RseGVucnJ6emJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAyNTAyMjUsImV4cCI6MjA1NTgyNjIyNX0.YZeu3bp3fbL8D6b-v30NHi9ajadTI0_s2FrwCC8VwT4', // Replace with your Supabase anon key
   );
   runApp(const MyApp());
 }

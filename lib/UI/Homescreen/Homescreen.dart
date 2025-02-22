@@ -1,4 +1,5 @@
 import 'package:aarogya_vishwas/Feature/AI%20model/widget/ModelUI.dart';
+import 'package:aarogya_vishwas/Feature/CloudStorage/cloudstorage.dart';
 import 'package:aarogya_vishwas/UI/Profile/Profilepage.dart';
 import 'package:aarogya_vishwas/localization/app_localization.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,8 @@ class HomeScreen extends StatelessWidget {
               title: 'medicalRecordStorage',
               description: 'medicalRecordDescription',
               onTap: () {
-                // Navigate to the medical record storage screen
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => DriveScreen()));
               },
             ),
             SizedBox(height: 16.0),

@@ -1,3 +1,4 @@
+import 'package:aarogya_vishwas/UI/Homescreen/Homescreen.dart';
 import 'package:aarogya_vishwas/UI/authscreen/authscreen.dart';
 import 'package:aarogya_vishwas/localization/app_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -88,8 +89,27 @@ class _ProfilepageState extends State<Profilepage> {
       onWillPop: () async => false, // Prevent back button
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            AppLocalizations.of(context)!.translate('profile'),
+          title: Row(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                },
+                child: Icon(
+                  Icons.arrow_back_rounded,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Text(
+                AppLocalizations.of(context)!.translate('Profile'),
+              ),
+            ],
           ),
           centerTitle: true,
           backgroundColor: Colors.teal,
