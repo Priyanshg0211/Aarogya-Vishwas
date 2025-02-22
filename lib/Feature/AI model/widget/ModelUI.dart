@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:aarogya_vishwas/Feature/AI%20model/widget/chatmessage.dart';
 import 'package:aarogya_vishwas/Feature/AI%20model/Constant/apiservice.dart';
+import 'package:aarogya_vishwas/UI/Homescreen/Homescreen.dart';
 import 'package:aarogya_vishwas/localization/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -81,7 +82,8 @@ class _HomePageState extends State<HomePage> {
           );
 
           _addMessage(ChatMessage(
-            text: AppLocalizations.of(context)!.translate('summarizeMedicalReport'),
+            text: AppLocalizations.of(context)!
+                .translate('summarizeMedicalReport'),
             isUser: true,
             imageFile: file,
             textStyle: messageTextStyle,
@@ -144,11 +146,23 @@ If applicable, mention if further clinical correlation is required.
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ), // Back icon
+          onPressed: () {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => HomeScreen())); // Navigate back
+          },
+        ),
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          AppLocalizations.of(context)!.translate('appTitle'), // Localized title
+          AppLocalizations.of(context)!
+              .translate('appTitle'), // Localized title
           style: TextStyle(
             fontFamily: 'Product Sans Medium',
             fontSize: 20,
@@ -200,7 +214,8 @@ If applicable, mention if further clinical correlation is required.
                   children: [
                     SizedBox(height: 16),
                     Text(
-                      AppLocalizations.of(context)!.translate('generatingReportSummary'), // Localized text
+                      AppLocalizations.of(context)!.translate(
+                          'generatingReportSummary'), // Localized text
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'Product Sans',
@@ -320,7 +335,8 @@ If applicable, mention if further clinical correlation is required.
               cursorColor: Colors.white,
               controller: _textController,
               decoration: InputDecoration(
-                hintText: AppLocalizations.of(context)!.translate('sendMessage'), // Localized hint text
+                hintText: AppLocalizations.of(context)!
+                    .translate('sendMessage'), // Localized hint text
                 hintStyle: TextStyle(
                   fontFamily: 'SofiaPro',
                   fontWeight: FontWeight.w400,

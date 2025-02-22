@@ -1,5 +1,6 @@
 import 'package:aarogya_vishwas/Feature/CloudStorage/ImageViewerScreen.dart';
 import 'package:aarogya_vishwas/Feature/CloudStorage/PdfViewerScreen.dart';
+import 'package:aarogya_vishwas/UI/Homescreen/Homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -24,7 +25,8 @@ class _DriveScreenState extends State<DriveScreen> {
   @override
   void initState() {
     super.initState();
-    userEmail = FirebaseAuth.instance.currentUser?.email ?? ''; // Set user email
+    userEmail =
+        FirebaseAuth.instance.currentUser?.email ?? ''; // Set user email
     _loadUploadedDocs();
   }
 
@@ -57,9 +59,8 @@ class _DriveScreenState extends State<DriveScreen> {
         await _supabase.storage.from('user_documents').upload(filePath, file);
 
         // Get the file URL
-        final String fileUrl = _supabase.storage
-            .from('user_documents')
-            .getPublicUrl(filePath);
+        final String fileUrl =
+            _supabase.storage.from('user_documents').getPublicUrl(filePath);
 
         // Save metadata to Firestore
         await _firestore
@@ -160,6 +161,15 @@ class _DriveScreenState extends State<DriveScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('My Drive'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back), // Back icon
+          onPressed: () {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => HomeScreen())); // Navigate back
+          },
+        ),
         actions: [
           IconButton(
             icon: Icon(isGridView ? Icons.list : Icons.grid_view),
