@@ -11,8 +11,8 @@
   "hospitalDescription": "सीधे कॉल सुविधा के साथ नजदीकी अस्पताल और आपातकालीन सेवाएं खोजें",
   "firstAidGuide": "ऑफलाइन प्राथमिक चिकित्सा गाइड",
   "firstAidDescription": "जलने, फ्रैक्चर, हार्ट अटैक जैसी आपात स्थितियों के लिए पहले से लोड किए गए जीवन रक्षक निर्देश",
-  "volunteerSupport": "स्वयंसेवक सहायता प्रणाली",
-  "volunteerDescription": "प्रशिक्षित सामुदायिक स्वास्थ्य स्वयंसेवकों से मदद लें",
+  "volunteerSupport": "आपातकालीन डॉक्टर परामर्श",
+  "volunteerDescription": "यहाँ डॉक्टर से तुरंत परामर्श लें और आपातकालीन सहायता प्राप्त करें।",
   "localVolunteer": "स्थानीय स्वयंसेवक कनेक्शन",
   "localVolunteerDescription": "तत्काल सहायता के लिए अपने गांव या आस-पास के क्षेत्रों के स्वास्थ्य स्वयंसेवकों का पता लगाएं और संपर्क करें",
   "summarizeMedicalReport": "मेडिकल रिपोर्ट का सारांश दें",
@@ -85,5 +85,66 @@
   "children018": "0-18 वर्ष के बच्चे।",
   "childrenAndPregnant": "बच्चे और गर्भवती महिलाएं।",
   "pregnantWomenOnly": "गर्भवती महिलाएं।",
-  "nutritionBeneficiaries": "बच्चे, गर्भवती महिलाएं और स्तनपान कराने वाली माताएं।"
+  "nutritionBeneficiaries": "बच्चे, गर्भवती महिलाएं और स्तनपान कराने वाली माताएं।",
+  "telemedicine": "टेलीमेडिसिन परामर्श",
+  "yourName": "आपका नाम",
+  "describeIssue": "अपनी समस्या का वर्णन करें",
+  "requestConsultation": "परामर्श का अनुरोध करें",
+  "yourConsultations": "आपके परामर्श",
+  "userNotLoggedIn": "उपयोगकर्ता लॉग इन नहीं है",
+  "fillAllFields": "कृपया सभी फ़ील्ड भरें",
+  "userEmailNotFound": "उपयोगकर्ता ईमेल नहीं मिला",
+  "consultationRequested": "परामर्श का अनुरोध सफलतापूर्वक किया गया!",
+  "consultationAccepted": "परामर्श स्वीकृत",
+  "consultationAcceptedDesc": "आपका परामर्श स्वीकार कर लिया गया है। फोन या वीडियो के माध्यम से कनेक्ट करें।",
+  "videoCallLaunchError": "वीडियो कॉल शुरू नहीं कर सका",
+  "pending": "लंबित",
+  "accepted": "स्वीकृत",
+  "completed": "पूर्ण",
+  "skills": "कौशल",
+  "location": "स्थान",
+  "callNow": "कॉल करें",
+  "callNotSupported": "कॉल करने में असमर्थ",
+  "errorMakingCall": "कॉल करने में त्रुटि हुई",
+  
+  "volunteerName1": "रमेश कुमार",
+  "volunteerSkills1": "प्राथमिक चिकित्सा, बुनियादी चिकित्सा",
+  "volunteerVillage1": "गाँव A, बिहार",
+  
+  "volunteerName2": "सुनीता देवी",
+  "volunteerSkills2": "मातृ स्वास्थ्य, शिशु देखभाल",
+  "volunteerVillage2": "गाँव B, उत्तर प्रदेश",
+  
+  "volunteerName3": "अरुण सिंह",
+  "volunteerSkills3": "आपातकालीन प्रतिक्रिया, सीपीआर",
+  "volunteerVillage3": "गाँव C, राजस्थान",
+  
+  "volunteerName4": "प्रिया शर्मा",
+  "volunteerSkills4": "सामुदायिक स्वास्थ्य, पोषण",
+  "volunteerVillage4": "गाँव D, महाराष्ट्र",
+  
+  "volunteerName5": "विजय पटेल",
+  "volunteerSkills5": "प्राथमिक चिकित्सा, आपदा प्रबंधन",
+  "volunteerVillage5": "गाँव E, गुजरात",
+  
+  "volunteerName6": "अंजली गुप्ता",
+  "volunteerSkills6": "स्वास्थ्य शिक्षा, टीकाकरण",
+  "volunteerVillage6": "गाँव F, मध्य प्रदेश",
+  
+  "volunteerName7": "राजेश यादव",
+  "volunteerSkills7": "प्राथमिक चिकित्सा, घाव देखभाल",
+  "volunteerVillage7": "गाँव G, हरियाणा",
+  
+  "volunteerName8": "कविता सिंह",
+  "volunteerSkills8": "वृद्ध देखभाल, जीर्ण रोग प्रबंधन",
+  "volunteerVillage8": "गाँव H, पंजाब",
+  
+  "volunteerName9": "सुरेश मेहता",
+  "volunteerSkills9": "प्राथमिक चिकित्सा, आपातकालीन परिवहन",
+  "volunteerVillage9": "गाँव I, कर्नाटक",
+  
+  "volunteerName10": "मीना कुमारी",
+  "volunteerSkills10": "महिला स्वास्थ्य, परिवार नियोजन",
+  "volunteerVillage10": "गाँव J, तमिल नाडु"
+
 }

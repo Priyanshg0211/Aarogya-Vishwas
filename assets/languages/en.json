@@ -10,8 +10,8 @@
   "hospitalDescription": "Find nearby hospitals and emergency services with direct call functionality",
   "firstAidGuide": "Offline First Aid Guide",
   "firstAidDescription": "Access preloaded life-saving instructions for emergencies like burns, fractures, heart attacks, and more",
-  "volunteerSupport": "Volunteer Support System",
-  "volunteerDescription": "Seek help from trained community health volunteers",
+  "volunteerSupport": "Urgent Doctor Consultation",
+  "volunteerDescription": "Consult doctors here for quick medical advice and emergency assistance anytime,anywhere",
   "localVolunteer": "Local Volunteer Connection",
   "localVolunteerDescription": "Locate and contact healthcare volunteers from your village or nearby areas for immediate assistance",
   "title1":"Welcome to Aarogya Vishwas Your Personal Medical Assistant",
@@ -65,6 +65,66 @@
   "children018": "Children aged 0-18 years.",
   "childrenAndPregnant": "Children and pregnant women.",
   "pregnantWomenOnly": "Pregnant women.",
-  "nutritionBeneficiaries": "Children, pregnant women, and lactating mothers."
+  "nutritionBeneficiaries": "Children, pregnant women, and lactating mothers.",
+  "telemedicine": "Telemedicine Consultation",
+  "yourName": "Your Name",
+  "describeIssue": "Describe Your Issue",
+  "requestConsultation": "Request Consultation",
+  "yourConsultations": "Your Consultations",
+  "userNotLoggedIn": "User Not Logged In",
+  "fillAllFields": "Please Fill All Fields",
+  "userEmailNotFound": "User Email Not Found",
+  "consultationRequested": "Consultation Requested Successfully!",
+  "consultationAccepted": "Consultation Accepted",
+  "consultationAcceptedDesc": "Your consultation has been accepted. Connect via phone or video.",
+  "videoCallLaunchError": "Could Not Launch Video Call",
+  "pending": "Pending",
+  "accepted": "Accepted",
+  "completed": "Completed",
+  "skills": "Skills",
+  "location": "Location",
+  "callNow": "Call Now",
+  "callNotSupported": "Call Not Supported",
+  "errorMakingCall": "Error Making Call",
+
+  "volunteerName1": "Ramesh Kumar",
+  "volunteerSkills1": "First Aid, Basic Medicine",
+  "volunteerVillage1": "Village A, Bihar",
+
+  "volunteerName2": "Sunita Devi",
+  "volunteerSkills2": "Maternal Health, Infant Care",
+  "volunteerVillage2": "Village B, Uttar Pradesh",
+
+  "volunteerName3": "Arun Singh",
+  "volunteerSkills3": "Emergency Response, CPR",
+  "volunteerVillage3": "Village C, Rajasthan",
+
+  "volunteerName4": "Priya Sharma",
+  "volunteerSkills4": "Community Health, Nutrition",
+  "volunteerVillage4": "Village D, Maharashtra",
+
+  "volunteerName5": "Vijay Patel",
+  "volunteerSkills5": "First Aid, Disaster Management",
+  "volunteerVillage5": "Village E, Gujarat",
+
+  "volunteerName6": "Anjali Gupta",
+  "volunteerSkills6": "Health Education, Vaccination",
+  "volunteerVillage6": "Village F, Madhya Pradesh",
+
+  "volunteerName7": "Rajesh Yadav",
+  "volunteerSkills7": "First Aid, Wound Care",
+  "volunteerVillage7": "Village G, Haryana",
+
+  "volunteerName8": "Kavita Singh",
+  "volunteerSkills8": "Elderly Care, Chronic Disease Management",
+  "volunteerVillage8": "Village H, Punjab",
+
+  "volunteerName9": "Suresh Mehta",
+  "volunteerSkills9": "First Aid, Emergency Transport",
+  "volunteerVillage9": "Village I, Karnataka",
+
+  "volunteerName10": "Meena Kumari",
+  "volunteerSkills10": "Women's Health, Family Planning",
+  "volunteerVillage10": "Village J, Tamil Nadu"
 }
 

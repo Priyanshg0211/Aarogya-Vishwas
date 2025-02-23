@@ -10,8 +10,8 @@
     "hospitalDescription": "थेट कॉल सुविधेसह जवळील रुग्णालये आणि आपत्कालीन सेवा शोधा",
     "firstAidGuide": "ऑफलाइन प्रथमोपचार मार्गदर्शक",
     "firstAidDescription": "जळणे, फ्रॅक्चर, हृदयविकाराचा झटका यासारख्या आपत्कालीन परिस्थितीसाठी आधीपासून लोड केलेल्या जीवरक्षक सूचना",
-    "volunteerSupport": "स्वयंसेवक सहाय्य प्रणाली",
-    "volunteerDescription": "प्रशिक्षित समुदाय आरोग्य स्वयंसेवकांकडून मदत मिळवा",
+    "volunteerSupport": "तातडीचा डॉक्टर सल्ला",
+    "volunteerDescription": "इथे डॉक्टरांचा त्वरित सल्ला घ्या आणि आपत्कालीन मदत मिळवा.",
     "localVolunteer": "स्थानिक स्वयंसेवक कनेक्शन",
     "localVolunteerDescription": "तात्काळ मदतीसाठी आपल्या गावातील किंवा जवळपासच्या भागातील आरोग्य स्वयंसेवकांचा शोध घ्या आणि संपर्क साधा",
     "title1": "तुमच्या वैद्यकीय अहवालांचा तुमच्या भाषेत अर्थ समजा",
@@ -66,7 +66,67 @@
     "children018": "0-18 वर्षे वयोगटातील मुले.",
     "childrenAndPregnant": "मुले आणि गर्भवती महिला.",
     "pregnantWomenOnly": "गर्भवती महिला.",
-    "nutritionBeneficiaries": "मुले, गर्भवती महिला आणि स्तनदा माता."  
+    "nutritionBeneficiaries": "मुले, गर्भवती महिला आणि स्तनदा माता.",
+      "telemedicine": "टेलिमेडिसिन सल्ला",
+      "yourName": "तुमचे नाव",
+      "describeIssue": "तुमच्या समस्येचे वर्णन करा",
+      "requestConsultation": "सल्ला विनंती करा",
+      "yourConsultations": "तुमचे सल्ले",
+      "userNotLoggedIn": "वापरकर्ता लॉग इन नाही",
+      "fillAllFields": "कृपया सर्व फील्ड भरा",
+      "userEmailNotFound": "वापरकर्ता ईमेल सापडला नाही",
+      "consultationRequested": "सल्ला यशस्वीरित्या विनंती केला गेला आहे!",
+      "consultationAccepted": "सल्ला स्वीकारला गेला आहे",
+      "consultationAcceptedDesc": "तुमचा सल्ला स्वीकारला गेला आहे. फोन किंवा व्हिडिओद्वारे कनेक्ट व्हा.",
+      "videoCallLaunchError": "व्हिडिओ कॉल सुरू करता आला नाही",
+      "pending": "प्रलंबित",
+      "accepted": "स्वीकारले",
+      "completed": "पूर्ण",
+      "skills": "कौशल्ये",
+      "location": "स्थान",
+      "callNow": "आता कॉल करा",
+      "callNotSupported": "कॉल समर्थित नाही",
+      "errorMakingCall": "कॉल करताना त्रुटी आली",
+    
+      "volunteerName1": "रमेश कुमार",
+      "volunteerSkills1": "प्राथमिक उपचार, मूलभूत औषध",
+      "volunteerVillage1": "गाव A, बिहार",
+    
+      "volunteerName2": "सुनीता देवी",
+      "volunteerSkills2": "मातृ आरोग्य, बाल देखभाल",
+      "volunteerVillage2": "गाव B, उत्तर प्रदेश",
+    
+      "volunteerName3": "अरुण सिंह",
+      "volunteerSkills3": "आणीबाणी प्रतिसाद, सीपीआर",
+      "volunteerVillage3": "गाव C, राजस्थान",
+    
+      "volunteerName4": "प्रिया शर्मा",
+      "volunteerSkills4": "समुदाय आरोग्य, पोषण",
+      "volunteerVillage4": "गाव D, महाराष्ट्र",
+    
+      "volunteerName5": "विजय पाटील",
+      "volunteerSkills5": "प्राथमिक उपचार, आपत्ती व्यवस्थापन",
+      "volunteerVillage5": "गाव E, गुजरात",
+    
+      "volunteerName6": "अंजली गुप्ता",
+      "volunteerSkills6": "आरोग्य शिक्षण, लसीकरण",
+      "volunteerVillage6": "गाव F, मध्य प्रदेश",
+    
+      "volunteerName7": "राजेश यादव",
+      "volunteerSkills7": "प्राथमिक उपचार, जखम देखभाल",
+      "volunteerVillage7": "गाव G, हरियाणा",
+    
+      "volunteerName8": "कविता सिंह",
+      "volunteerSkills8": "वृद्ध देखभाल, क्रॉनिक रोग व्यवस्थापन",
+      "volunteerVillage8": "गाव H, पंजाब",
+    
+      "volunteerName9": "सुरेश मेहता",
+      "volunteerSkills9": "प्राथमिक उपचार, आणीबाणी वाहतूक",
+      "volunteerVillage9": "गाव I, कर्नाटक",
+    
+      "volunteerName10": "मीना कुमारी",
+      "volunteerSkills10": "स्त्री आरोग्य, कुटुंब नियोजन",
+      "volunteerVillage10": "गाव J, तमिळनाडू"
   
   }
   
