@@ -113,7 +113,7 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back,color: Colors.white,),
           onPressed: () {
             Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (context) => HomeScreen()));
@@ -124,6 +124,7 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
           style: TextStyle(
             fontFamily: 'Product Sans Medium',
             fontSize: 20,
+            color: Colors.white
           ),
         ),
         backgroundColor: Colors.teal,
@@ -141,11 +142,7 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
       ),
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.blue.shade50, Colors.white],
-          ),
+         color: Colors.white
         ),
         child: Column(
           children: [
@@ -165,7 +162,7 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
                       AppLocalizations.of(context)!.translate(category),
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.blue.shade800,
+                        color: Colors.black,
                       ),
                     ),
                   );
@@ -177,13 +174,13 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
                 },
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.blue.shade800,
+                  color: Colors.black,
                 ),
                 dropdownColor: Colors.white,
-                icon: Icon(Icons.arrow_drop_down, color: Colors.blue.shade800),
+                icon: Icon(Icons.arrow_drop_down, color: Colors.black),
                 underline: Container(
                   height: 2,
-                  color: Colors.blue.shade800,
+                  color: Colors.black,
                 ),
               ),
             ),
@@ -249,7 +246,7 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
                         ),
                         trailing: IconButton(
                           icon: Icon(Icons.arrow_forward,
-                              color: Colors.blue.shade800),
+                              color: Colors.teal),
                           onPressed: () async {
                             if (await canLaunch(scheme['link'])) {
                               await launch(scheme['link']);

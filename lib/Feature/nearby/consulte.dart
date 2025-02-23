@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'dart:math';
 
 class ConsultationScreen extends StatefulWidget {
   @override
@@ -65,6 +66,14 @@ class _ConsultationScreenState extends State<ConsultationScreen> {
     }
   }
 
+  String _generateMeetLink() {
+    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    final random = Random();
+    final code =
+        List.generate(9, (index) => chars[random.nextInt(chars.length)]).join();
+    return "https://meet.google.com/$code";
+  }
+
   void _setupFirestoreListener() {
     if (userEmail.isEmpty) return;
 
@@ -77,11 +86,16 @@ class _ConsultationScreenState extends State<ConsultationScreen> {
       for (var change in snapshot.docChanges) {
         if (change.type == DocumentChangeType.modified) {
           final consultation = change.doc.data() as Map<String, dynamic>;
-          if (consultation['status'] == "Accepted") {
+          if (consultation['status'] == "Accepted" &&
+              consultation['meetLink'] == null) {
+            final meetLink = _generateMeetLink();
+            change.doc.reference.update({'meetLink': meetLink});
+
             _showNotification(
               AppLocalizations.of(context)?.translate('consultationAccepted') ??
                   'Consultation Accepted',
-              AppLocalizations.of(context)?.translate('consultationAcceptedDesc') ??
+              AppLocalizations.of(context)
+                      ?.translate('consultationAcceptedDesc') ??
                   'Your consultation has been accepted.',
             );
           }
@@ -148,10 +162,9 @@ class _ConsultationScreenState extends State<ConsultationScreen> {
     );
   }
 
-  void _joinVideoCall() async {
-    const url = "https://meet.google.com/abc-xyz-123";
-    if (await canLaunch(url)) {
-      await launch(url);
+  void _joinVideoCall(String meetLink) async {
+    if (await canLaunch(meetLink)) {
+      await launch(meetLink);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -171,8 +184,12 @@ class _ConsultationScreenState extends State<ConsultationScreen> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+        backgroundColor: Colors.teal,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
           onPressed: () {
             Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (context) => HomeScreen()));
@@ -181,6 +198,9 @@ class _ConsultationScreenState extends State<ConsultationScreen> {
         title: Text(
           AppLocalizations.of(context)?.translate('telemedicine') ??
               'Telemedicine',
+          style: TextStyle(
+            color: Colors.white,
+          ),
         ),
       ),
       body: Padding(
@@ -191,7 +211,8 @@ class _ConsultationScreenState extends State<ConsultationScreen> {
               controller: _nameController,
               decoration: InputDecoration(
                 labelText:
-                    AppLocalizations.of(context)?.translate('yourName') ?? 'Your Name',
+                    AppLocalizations.of(context)?.translate('yourName') ??
+                        'Your Name',
               ),
               keyboardType: keyboardType,
             ),
@@ -207,11 +228,23 @@ class _ConsultationScreenState extends State<ConsultationScreen> {
               keyboardType: keyboardType,
             ),
             SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _requestConsultation,
-              child: Text(
-                AppLocalizations.of(context)?.translate('requestConsultation') ??
-                    'Request Consultation',
+            Container(
+              height: 50,
+              width: MediaQuery.sizeOf(context).width * 0.9,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                onPressed: _requestConsultation,
+                child: Text(
+                  AppLocalizations.of(context)
+                          ?.translate('requestConsultation') ??
+                      'Request Consultation',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
             SizedBox(height: 32),
@@ -242,6 +275,7 @@ class _ConsultationScreenState extends State<ConsultationScreen> {
                       final status = consultation['status'];
                       final issue = consultation['issue'];
                       final name = consultation['name'];
+                      final meetLink = consultation['meetLink'];
 
                       return Card(
                         margin: EdgeInsets.symmetric(vertical: 8),
@@ -252,8 +286,8 @@ class _ConsultationScreenState extends State<ConsultationScreen> {
                           subtitle: Text(issue),
                           trailing: status == "Accepted"
                               ? IconButton(
-                                  icon: Icon(Icons.video_call),
-                                  onPressed: _joinVideoCall,
+                                  icon: Icon(Icons.video_call,color: Colors.teal,),
+                                  onPressed: () => _joinVideoCall(meetLink),
                                 )
                               : null,
                         ),

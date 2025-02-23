@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
         XFile? file = await picker.pickImage(source: ImageSource.gallery);
         if (file != null && mounted) {
           TextStyle messageTextStyle = TextStyle(
-            fontFamily: 'SofiaPro',
+            fontFamily: 'Product Sans Medium',
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -149,7 +149,7 @@ If applicable, mention if further clinical correlation is required.
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Colors.white,
           ), // Back icon
           onPressed: () {
             Navigator.pushReplacement(
@@ -158,7 +158,7 @@ If applicable, mention if further clinical correlation is required.
                     builder: (context) => HomeScreen())); // Navigate back
           },
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.teal,
         centerTitle: true,
         title: Text(
           AppLocalizations.of(context)!
@@ -166,24 +166,17 @@ If applicable, mention if further clinical correlation is required.
           style: TextStyle(
             fontFamily: 'Product Sans Medium',
             fontSize: 20,
-            color: Colors.black,
+            color: Colors.white,
             fontWeight: FontWeight.w500,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.logout),
-            onPressed: () {
-              // Add logout functionality
-            },
-          ),
-        ],
+
       ),
       body: Stack(
         children: [
           RefreshIndicator(
             onRefresh: _handleRefresh,
-            backgroundColor: Colors.grey[900],
+            backgroundColor:Colors.teal,
             color: Colors.white,
             child: Column(
               children: [
@@ -338,12 +331,12 @@ If applicable, mention if further clinical correlation is required.
                 hintText: AppLocalizations.of(context)!
                     .translate('sendMessage'), // Localized hint text
                 hintStyle: TextStyle(
-                  fontFamily: 'SofiaPro',
+                  fontFamily: 'Product Sans Mediumr',
                   fontWeight: FontWeight.w400,
-                  color: Colors.white54,
+                  color: Colors.white,
                 ),
                 filled: true,
-                fillColor: Colors.grey[600],
+                fillColor: Colors.teal,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20.0),
                   borderSide: BorderSide.none,
@@ -362,14 +355,14 @@ If applicable, mention if further clinical correlation is required.
                 prefixIcon: IconButton(
                   icon: Icon(
                     Icons.image,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                   onPressed: _sendMediaMessage,
                 ),
                 suffixIcon: IconButton(
                   icon: Icon(
                     Icons.send,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                   onPressed: () => _handleSubmitted(_textController.text),
                 ),

@@ -1,6 +1,7 @@
 import 'package:aarogya_vishwas/Feature/AI%20model/widget/ModelUI.dart';
 import 'package:aarogya_vishwas/Feature/CloudStorage/cloudstorage.dart';
 import 'package:aarogya_vishwas/Feature/Volunteer/volunteer.dart';
+import 'package:aarogya_vishwas/Feature/ambulance/ambulance.dart';
 import 'package:aarogya_vishwas/Feature/firstaid/FirstAidGuidePage.dart';
 import 'package:aarogya_vishwas/Feature/govermentscheme/govermentscheme.dart';
 import 'package:aarogya_vishwas/Feature/nearby/consulte.dart';
@@ -15,6 +16,9 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context)!.translate('appTitle'),
+          style: TextStyle(
+            color: Colors.white,
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.teal,
@@ -77,8 +81,9 @@ class HomeScreen extends StatelessWidget {
               icon: Icons.local_hospital,
               title: 'hospitalLocator',
               description: 'hospitalDescription',
-              onTap: () {
-                // Navigate to the hospital locator screen
+               onTap: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => EmergencyConnectPage()));
               },
             ),
             SizedBox(height: 16.0),

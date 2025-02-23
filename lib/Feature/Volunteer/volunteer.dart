@@ -72,14 +72,21 @@ class VolunteerSupport extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.teal,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
           onPressed: () {
             Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (context) => HomeScreen()));
           },
         ),
-        title: Text(AppLocalizations.of(context)!.translate('volunteerSupport2')),
+        title: Text(
+          AppLocalizations.of(context)!.translate('volunteerSupport2'),
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: Column(
         children: [
@@ -108,22 +115,26 @@ class VolunteerSupport extends StatelessWidget {
                           .translate(volunteer['name'])
                           .substring(0, 1)),
                     ),
-                    title: Text(
-                        AppLocalizations.of(context)!.translate(volunteer['name'])),
+                    title: Text(AppLocalizations.of(context)!
+                        .translate(volunteer['name'])),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                            "${AppLocalizations.of(context)!.translate('skills')}: ${AppLocalizations.of(context)!.translate(volunteer['skills'])}"),
+                            "${AppLocalizations.of(context)!.translate('skills')}: ${AppLocalizations.of(context)!.translate(volunteer['skills'])}",style: TextStyle(color: Colors.teal),),
                         Text(
                             "${AppLocalizations.of(context)!.translate('location')}: ${AppLocalizations.of(context)!.translate(volunteer['village'])}"),
                       ],
                     ),
                     trailing: ElevatedButton.icon(
-                      icon: Icon(Icons.call),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.teal,
+                      ),
+                      icon: Icon(Icons.call,color: Colors.white,),
                       label: Text(
-                          AppLocalizations.of(context)!.translate('callNow')),
-                      onPressed: () => _callVolunteer(context, volunteer['phone']),
+                          AppLocalizations.of(context)!.translate('callNow'),style: TextStyle(color: Colors.white),),
+                      onPressed: () =>
+                          _callVolunteer(context, volunteer['phone']),
                     ),
                     isThreeLine: true,
                   ),

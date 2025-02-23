@@ -321,11 +321,13 @@ class _DriveScreenState extends State<DriveScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.teal,
         title: Text(
-          AppLocalizations.of(context)?.translate('my_drive') ?? 'My Drive'
+          AppLocalizations.of(context)?.translate('my_drive') ?? 'My Drive',
+          style: TextStyle(color: Colors.white),
         ),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back,color: Colors.white,),
           onPressed: () {
             Navigator.pushReplacement(
               context,
@@ -335,14 +337,15 @@ class _DriveScreenState extends State<DriveScreen> {
         ),
         actions: [
           IconButton(
-            icon: Icon(isGridView ? Icons.list : Icons.grid_view),
+            icon: Icon(isGridView ? Icons.list : Icons.grid_view,color: Colors.white,),
             onPressed: _toggleView,
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.teal,
         onPressed: _uploadFile,
-        child: const Icon(Icons.upload),
+        child: const Icon(Icons.upload,color: Colors.white,),
       ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())

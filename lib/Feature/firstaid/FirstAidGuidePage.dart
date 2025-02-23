@@ -1,3 +1,4 @@
+import 'package:aarogya_vishwas/UI/Homescreen/Homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -162,7 +163,7 @@ class _FirstAidGuidePageState extends State<FirstAidGuidePage> {
     try {
       // First, check if TTS is available
       var available = await flutterTts.isLanguageAvailable(selectedLanguage);
-      
+
       if (available) {
         // Configure TTS settings
         await Future.wait([
@@ -215,7 +216,8 @@ class _FirstAidGuidePageState extends State<FirstAidGuidePage> {
       });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Failed to initialize text-to-speech. Please check your device settings.'),
+          content: Text(
+              'Failed to initialize text-to-speech. Please check your device settings.'),
           duration: Duration(seconds: 3),
         ),
       );
@@ -228,7 +230,8 @@ class _FirstAidGuidePageState extends State<FirstAidGuidePage> {
       if (!isTtsInitialized) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Text-to-speech is not available. Please check your device settings.'),
+            content: Text(
+                'Text-to-speech is not available. Please check your device settings.'),
             duration: Duration(seconds: 3),
           ),
         );
@@ -258,10 +261,10 @@ class _FirstAidGuidePageState extends State<FirstAidGuidePage> {
         selectedLanguage = language;
         isTtsInitialized = false;
       });
-      
+
       // Stop any ongoing speech
       await flutterTts.stop();
-      
+
       // Initialize TTS with new language
       await initializeTts();
     }
@@ -272,13 +275,17 @@ class _FirstAidGuidePageState extends State<FirstAidGuidePage> {
     flutterTts.stop();
     super.dispose();
   }
-  Future<void> speakCategoryInstructions(String title, List<String> steps) async {
-    String fullInstructions = "What to do in case of $title? ${steps.join('. ')}";
+
+  Future<void> speakCategoryInstructions(
+      String title, List<String> steps) async {
+    String fullInstructions =
+        "What to do in case of $title? ${steps.join('. ')}";
     await speakInstructions(fullInstructions);
   }
 
   Future<void> callEmergency() async {
-    const emergencyNumber = 'tel:102'; // Replace with your country's emergency number
+    const emergencyNumber =
+        'tel:102'; // Replace with your country's emergency number
     if (await canLaunch(emergencyNumber)) {
       await launch(emergencyNumber);
     } else {
@@ -290,23 +297,49 @@ class _FirstAidGuidePageState extends State<FirstAidGuidePage> {
 
   @override
   Widget build(BuildContext context) {
-    final categories = firstAidCategories[selectedLanguage] ?? firstAidCategories['en']!;
+    final categories =
+        firstAidCategories[selectedLanguage] ?? firstAidCategories['en']!;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Offline First Aid Guide'),
+        backgroundColor: Colors.teal,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ), // Back icon
+          onPressed: () {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => HomeScreen())); // Navigate back
+          },
+        ),
+        title: Text(
+          'Offline First Aid Guide',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
         actions: [
           IconButton(
-            icon: Icon(Icons.emergency),
+            icon: Icon(
+              Icons.emergency,
+              color: Colors.white,
+            ),
             onPressed: callEmergency, // Emergency SOS button
           ),
           DropdownButton<String>(
+            dropdownColor: Colors.teal,
             value: selectedLanguage,
             onChanged: changeLanguage,
             items: languages.entries.map((entry) {
               return DropdownMenuItem(
                 value: entry.key,
-                child: Text(entry.value),
+                child: Text(
+                  entry.value,
+                  style: TextStyle(color: Colors.white),
+                ),
               );
             }).toList(),
           ),
@@ -330,7 +363,8 @@ class _FirstAidGuidePageState extends State<FirstAidGuidePage> {
               ),
               trailing: IconButton(
                 icon: Icon(Icons.volume_up),
-                onPressed: () => speakCategoryInstructions(category.key, category.value),
+                onPressed: () =>
+                    speakCategoryInstructions(category.key, category.value),
               ),
               children: [
                 Padding(
