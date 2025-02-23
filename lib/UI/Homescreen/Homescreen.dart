@@ -1,6 +1,7 @@
 import 'package:aarogya_vishwas/Feature/AI%20model/widget/ModelUI.dart';
 import 'package:aarogya_vishwas/Feature/CloudStorage/cloudstorage.dart';
 import 'package:aarogya_vishwas/Feature/Volunteer/volunteer.dart';
+import 'package:aarogya_vishwas/Feature/firstaid/FirstAidGuidePage.dart';
 import 'package:aarogya_vishwas/Feature/govermentscheme/govermentscheme.dart';
 import 'package:aarogya_vishwas/Feature/nearby/consulte.dart';
 import 'package:aarogya_vishwas/UI/Profile/Profilepage.dart';
@@ -87,7 +88,8 @@ class HomeScreen extends StatelessWidget {
               title: 'firstAidGuide',
               description: 'firstAidDescription',
               onTap: () {
-                // Navigate to the first aid guide screen
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => FirstAidGuidePage()));
               },
             ),
             SizedBox(height: 16.0),
