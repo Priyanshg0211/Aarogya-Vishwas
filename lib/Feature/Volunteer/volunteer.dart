@@ -87,7 +87,7 @@ class VolunteerSupport extends StatelessWidget {
             padding: EdgeInsets.all(16),
             color: Colors.blue.shade50,
             child: Text(
-              AppLocalizations.of(context)!.translate('volunteerSupportDesc'),
+              AppLocalizations.of(context)!.translate('volunteerSupportDesc1'),
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.blue.shade900,
