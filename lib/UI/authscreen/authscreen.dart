@@ -35,7 +35,8 @@ class AuthScreen extends StatelessWidget {
 
       if (user != null) {
         // Check if the user is new or existing
-        final bool isNewUser = userCredential.additionalUserInfo?.isNewUser ?? false;
+        final bool isNewUser =
+            userCredential.additionalUserInfo?.isNewUser ?? false;
 
         if (isNewUser) {
           // Store user data in Firestore using email as the document ID
@@ -74,30 +75,30 @@ class AuthScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Welcome to the App',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => _signInWithGoogle(context),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                backgroundColor: Colors.blue,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.g_mobiledata, size: 30),
-                  SizedBox(width: 10),
-                  Text(
-                    'Sign in with Google',
-                    style: TextStyle(fontSize: 18),
+            Container(
+              height: 50,
+              width: MediaQuery.sizeOf(context).width * 0.9,
+              child: ElevatedButton(
+                onPressed: () => _signInWithGoogle(context),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                  backgroundColor: Colors.teal,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                ],
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Sign in with Google',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontFamily: 'Product Sans Medium',
+                          color: Colors.white),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

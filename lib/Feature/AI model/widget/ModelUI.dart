@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:aarogya_vishwas/Feature/AI%20model/Constant/apiservice.dart';
 import 'package:aarogya_vishwas/Feature/AI%20model/widget/chatmessage.dart';
 import 'package:aarogya_vishwas/UI/Homescreen/Homescreen.dart';
-import 'package:aarogya_vishwas/localization/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:image_picker/image_picker.dart';
@@ -62,12 +61,15 @@ class _HomePageState extends State<HomePage> {
     _textController.clear();
     _addMessage(ChatMessage(text: text, isUser: true, textStyle: TextStyle()));
     _setGeneratingResponse(true);
+
     APIService.instance.getGeminiResponse(
       text,
       targetLanguage: _selectedLanguage,
       callback: (message) {
         if (mounted) {
           _addMessage(message);
+          _speakText(
+              message.text); // Speak the response in the selected language
           _setGeneratingResponse(false);
         }
       },
@@ -75,11 +77,25 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _speakText(String text) async {
-    await flutterTts.setLanguage(_selectedLanguage);
-    await flutterTts.speak(text);
+    // Remove all non-word characters except spaces
+    String filteredText = text.replaceAll(RegExp(r'[^a-zA-Z0-9\s]'), '');
+
+    await flutterTts
+        .setLanguage(_selectedLanguage); 
+    await flutterTts.speak(filteredText);
   }
 
   Future<void> _generateAndSharePDF(String text) async {
+    if (text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('No content to generate PDF.'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
     try {
       final pdf = pw.Document();
 
@@ -179,8 +195,7 @@ class _HomePageState extends State<HomePage> {
           );
 
           _addMessage(ChatMessage(
-            text: AppLocalizations.of(context)!
-                .translate('Summarize this Medical Report'),
+            text: 'Summarize this Medical Report',
             isUser: true,
             imageFile: file,
             textStyle: messageTextStyle,
@@ -259,7 +274,7 @@ If applicable, mention if further clinical correlation is required.
         backgroundColor: Colors.teal,
         centerTitle: true,
         title: Text(
-          AppLocalizations.of(context)!.translate('appTitle'),
+          'Medical Report Summary',
           style: TextStyle(
             fontFamily: 'Product Sans Medium',
             fontSize: 20,
@@ -321,8 +336,7 @@ If applicable, mention if further clinical correlation is required.
                     CircularProgressIndicator(color: Colors.white),
                     SizedBox(height: 16),
                     Text(
-                      AppLocalizations.of(context)!
-                          .translate('generatingReportSummary'),
+                      'Generating Report Summary...',
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'Product Sans',
@@ -483,8 +497,7 @@ If applicable, mention if further clinical correlation is required.
               cursorColor: Colors.white,
               controller: _textController,
               decoration: InputDecoration(
-                hintText:
-                    AppLocalizations.of(context)!.translate('Send Message'),
+                hintText: 'Send Message',
                 hintStyle: TextStyle(
                   fontFamily: 'Product Sans Mediumr',
                   fontWeight: FontWeight.w400,
