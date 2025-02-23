@@ -14,7 +14,7 @@ class APIService {
   final String apiUrl =
       'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent';
 
-  Future<void> getGeminiResponse(String prompt, {XFile? imageFile, required MessageCallback callback}) async {
+  Future<void> getGeminiResponse(String prompt, {XFile? imageFile, required MessageCallback callback, required String targetLanguage}) async {
     try {
       List<Map<String, dynamic>> contents = [];
 
