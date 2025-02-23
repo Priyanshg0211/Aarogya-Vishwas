@@ -1,6 +1,8 @@
 import 'package:aarogya_vishwas/Feature/AI%20model/widget/ModelUI.dart';
 import 'package:aarogya_vishwas/Feature/CloudStorage/cloudstorage.dart';
+import 'package:aarogya_vishwas/Feature/Volunteer/volunteer.dart';
 import 'package:aarogya_vishwas/Feature/govermentscheme/govermentscheme.dart';
+import 'package:aarogya_vishwas/Feature/nearby/consulte.dart';
 import 'package:aarogya_vishwas/UI/Profile/Profilepage.dart';
 import 'package:aarogya_vishwas/localization/app_localization.dart';
 import 'package:flutter/material.dart';
@@ -95,7 +97,8 @@ class HomeScreen extends StatelessWidget {
               title: 'volunteerSupport',
               description: 'volunteerDescription',
               onTap: () {
-                // Navigate to the volunteer support screen
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => ConsultationScreen()));
               },
             ),
             SizedBox(height: 16.0),
@@ -105,7 +108,8 @@ class HomeScreen extends StatelessWidget {
               title: 'localVolunteer',
               description: 'localVolunteerDescription',
               onTap: () {
-                // Navigate to the local volunteer connection screen
+                 Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => VolunteerSupport()));
               },
             ),
           ],
