@@ -40,5 +40,15 @@
   "get_started": "शुरू करें",
   "by_continuing": "जारी रखने पर, आप सहमत होते हैं कि आपने हमारे",
   "terms_and_conditions": "नियम और शर्तें",
-  "privacy_policy": "गोपनीयता नीति"
+  "privacy_policy": "गोपनीयता नीति",
+  "my_drive": "मेरी ड्राइव",
+  "no_files_uploaded": "अभी तक कोई फ़ाइल अपलोड नहीं की गई है",
+  "uploaded_on": "अपलोड की गई",
+  "error_occurred": "त्रुटि हुई है",
+  "could_not_open_file": "फ़ाइल खोलने में असमर्थ",
+  "file_uploaded_successfully": "फ़ाइल सफलतापूर्वक अपलोड की गई",
+  "upload_error": "फ़ाइल अपलोड करने में त्रुटि",
+  "file_deleted": "फ़ाइल सफलतापूर्वक हटा दी गई",
+  "delete_error": "फ़ाइल हटाने में त्रुटि",
+  "error_opening_file": "फ़ाइल खोलने में त्रुटि"
 }

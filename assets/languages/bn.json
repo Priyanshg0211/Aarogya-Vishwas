@@ -20,6 +20,16 @@
     "get_started": "শুরু করুন",
     "by_continuing": "চালিয়ে যেতে, আপনি সম্মত হন যে আপনি আমাদের শর্তাবলী পড়েছেন এবং গ্রহণ করেছেন",
     "terms_and_conditions": "শর্তাবলী",
-    "privacy_policy": "গোপনীয়তা নীতি"
+    "privacy_policy": "গোপনীয়তা নীতি",
+    "my_drive": "আমার ড্রাইভ",
+  "no_files_uploaded": "এখনও কোন ফাইল আপলোড করা হয়নি",
+  "uploaded_on": "আপলোড করা হয়েছে",
+  "error_occurred": "ত্রুটি ঘটেছে",
+  "could_not_open_file": "ফাইল খোলা যায়নি",
+  "file_uploaded_successfully": "ফাইল সফলভাবে আপলোড করা হয়েছে",
+  "upload_error": "ফাইল আপলোড করতে ত্রুটি",
+  "file_deleted": "ফাইল সফলভাবে মুছে ফেলা হয়েছে",
+  "delete_error": "ফাইল মুছতে ত্রুটি",
+  "error_opening_file": "ফাইল খুলতে ত্রুটি"
   }
   

@@ -20,6 +20,16 @@
   "get_started": "Get Started",
   "by_continuing": "By continuing, you agree that you have read and accept our",
   "terms_and_conditions": "T&Cs",
-  "privacy_policy": "Privacy Policy"
+  "privacy_policy": "Privacy Policy",
+  "my_drive": "My Drive",
+  "no_files_uploaded": "No files uploaded yet",
+  "uploaded_on": "Uploaded on",
+  "error_occurred": "An error occurred",
+  "could_not_open_file": "Could not open file",
+  "file_uploaded_successfully": "File uploaded successfully",
+  "upload_error": "Error uploading file",
+  "file_deleted": "File deleted successfully",
+  "delete_error": "Error deleting file",
+  "error_opening_file": "Error opening file"
 }
 

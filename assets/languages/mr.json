@@ -20,6 +20,16 @@
     "get_started": "सुरू करा",
     "by_continuing": "सुरू ठेवण्यासाठी, आपण आमच्या अटी व शर्ती वाचल्या आहेत आणि त्यांना मान्य करता",
     "terms_and_conditions": "अटी व शर्ती",
-    "privacy_policy": "गोपनीयता धोरण"
+    "privacy_policy": "गोपनीयता धोरण",
+    "my_drive": "माझे ड्राइव्ह",
+    "no_files_uploaded": "अजून कोणतीही फाईल अपलोड केलेली नाही",
+    "uploaded_on": "अपलोड केले",
+    "error_occurred": "त्रुटी आली आहे",
+    "could_not_open_file": "फाईल उघडता आली नाही",
+    "file_uploaded_successfully": "फाईल यशस्वीरित्या अपलोड केली",
+    "upload_error": "फाईल अपलोड करताना त्रुटी",
+    "file_deleted": "फाईल यशस्वीरित्या हटवली",
+    "delete_error": "फाईल हटवताना त्रुटी",
+    "error_opening_file": "फाईल उघडताना त्रुटी"
   }
   
