@@ -2,6 +2,8 @@ import 'package:aarogya_vishwas/UI/Homescreen/Homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../localization/app_localization.dart';
+
 class GovernmentSchemesPage extends StatefulWidget {
   @override
   _GovernmentSchemesPageState createState() => _GovernmentSchemesPageState();
@@ -10,101 +12,94 @@ class GovernmentSchemesPage extends StatefulWidget {
 class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
   final List<Map<String, dynamic>> schemes = [
     {
-      'title': 'Ayushman Bharat Yojana',
-      'description':
-          'Provides health coverage of up to ₹5 lakh per family per year for secondary and tertiary care hospitalization.',
-      'eligibility': 'Families living below the poverty line.',
+      'title': 'ayushmanBharat',
+      'description': 'ayushmanBharatDesc',
+      'eligibility': 'bplFamilies',
       'image':
           'https://www.india.gov.in/sites/upload_files/npi/files/ayushman_bharat.jpg',
       'link': 'https://www.pmjay.gov.in/',
-      'category': 'Health',
+      'category': 'healthCategory',
     },
     {
-      'title': 'National Health Mission',
-      'description':
-          'Aims to provide accessible, affordable, and quality healthcare to rural and urban populations.',
-      'eligibility': 'All citizens, especially women and children.',
+      'title': 'nationalHealth',
+      'description': 'nationalHealthDesc',
+      'eligibility': 'allCitizens',
       'image': 'https://www.nhm.gov.in/images/nhm_logo.png',
       'link': 'https://nhm.gov.in/',
-      'category': 'Health',
+      'category': 'healthCategory',
     },
     {
-      'title': 'Pradhan Mantri Matru Vandana Yojana',
-      'description':
-          'Provides financial assistance to pregnant and lactating women for their first living child.',
-      'eligibility': 'Pregnant women and lactating mothers.',
+      'title': 'matruVandana',
+      'description': 'matruVandanaDesc',
+      'eligibility': 'pregnantWomen',
       'image': 'https://www.pmmvy.gov.in/images/logo.png',
       'link': 'https://pmmvy.gov.in/',
-      'category': 'Women',
+      'category': 'womenCategory',
     },
     {
-      'title': 'Janani Shishu Suraksha Karyakram',
-      'description':
-          'Ensures free and cashless delivery, C-section, and postnatal care for pregnant women and sick newborns.',
-      'eligibility': 'All pregnant women and sick newborns.',
+      'title': 'jananiShishu',
+      'description': 'jananiShishuDesc',
+      'eligibility': 'pregnantAndNewborn',
       'image': 'https://www.nhp.gov.in/sites/default/files/jssk_logo.png',
       'link': 'https://www.nhp.gov.in/janani-shishu-suraksha-karyakram-jssk_pg',
-      'category': 'Women',
+      'category': 'womenCategory',
     },
     {
-      'title': 'Rashtriya Bal Swasthya Karyakram',
-      'description':
-          'Provides comprehensive healthcare services for children, including early detection of diseases.',
-      'eligibility': 'Children aged 0-18 years.',
+      'title': 'balSwasthya',
+      'description': 'balSwasthyaDesc',
+      'eligibility': 'children018',
       'image': 'https://www.nhm.gov.in/images/rbsk_logo.png',
       'link': 'https://nhm.gov.in/rbsk/',
-      'category': 'Children',
+      'category': 'childrenCategory',
     },
     {
-      'title': 'Mission Indradhanush',
-      'description':
-          'Aims to immunize children and pregnant women against vaccine-preventable diseases.',
-      'eligibility': 'Children and pregnant women.',
+      'title': 'missionIndradhanush',
+      'description': 'missionIndradhanushDesc',
+      'eligibility': 'childrenAndPregnant',
       'image':
           'https://www.nhp.gov.in/sites/default/files/mission_indradhanush_logo.png',
       'link': 'https://www.nhp.gov.in/mission-indradhanush_pg',
-      'category': 'Children',
+      'category': 'childrenCategory',
     },
     {
-      'title': 'Pradhan Mantri Surakshit Matritva Abhiyan',
-      'description':
-          'Provides free antenatal services to pregnant women on the 9th of every month.',
-      'eligibility': 'Pregnant women.',
+      'title': 'surakshitMatritva',
+      'description': 'surakshitMatritvaDesc',
+      'eligibility': 'pregnantWomenOnly',
       'image': 'https://www.nhp.gov.in/sites/default/files/pmsma_logo.png',
       'link': 'https://www.nhp.gov.in/pmsma_pg',
-      'category': 'Women',
+      'category': 'womenCategory',
     },
     {
-      'title': 'National Nutrition Mission (Poshan Abhiyaan)',
-      'description':
-          'Aims to improve nutritional outcomes for children, pregnant women, and lactating mothers.',
-      'eligibility': 'Children, pregnant women, and lactating mothers.',
+      'title': 'nutritionMission',
+      'description': 'nutritionMissionDesc',
+      'eligibility': 'nutritionBeneficiaries',
       'image':
           'https://www.nhp.gov.in/sites/default/files/poshan_abhiyaan_logo.png',
       'link': 'https://www.nhp.gov.in/poshan-abhiyaan_pg',
-      'category': 'Children',
+      'category': 'childrenCategory',
     },
     {
-      'title': 'Pradhan Mantri Jan Arogya Yojana (PM-JAY)',
-      'description':
-          'Provides health insurance coverage of up to ₹5 lakh per family per year for secondary and tertiary care hospitalization.',
-      'eligibility': 'Families living below the poverty line.',
+      'title': 'pmjay',
+      'description': 'pmjayDesc',
+      'eligibility': 'bplFamilies',
       'image': 'assets/images/government-of-india.jpg',
       'link': 'https://www.pmjay.gov.in/',
-      'category': 'Health',
+      'category': 'healthCategory',
     },
   ];
 
   String searchQuery = '';
-  String selectedCategory = 'All';
+  String selectedCategory = 'allCategories';
 
   List<Map<String, dynamic>> get filteredSchemes {
     List<Map<String, dynamic>> filtered = schemes
         .where((scheme) =>
-            scheme['title'].toLowerCase().contains(searchQuery.toLowerCase()))
+            AppLocalizations.of(context)!.translate(scheme['title'])
+                .toLowerCase()
+                .contains(searchQuery.toLowerCase()))
         .toList();
 
-    if (selectedCategory != 'All') {
+    if (selectedCategory != 'allCategories') {
       filtered = filtered
           .where((scheme) => scheme['category'] == selectedCategory)
           .toList();
@@ -118,16 +113,14 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back), 
+          icon: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => HomeScreen())); // Navigate back
+                context, MaterialPageRoute(builder: (context) => HomeScreen()));
           },
         ),
         title: Text(
-          'Government Health Schemes',
+          AppLocalizations.of(context)!.translate('governmentSchemes'),
           style: TextStyle(
             fontFamily: 'Product Sans Medium',
             fontSize: 20,
@@ -140,7 +133,7 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
             onPressed: () {
               showSearch(
                 context: context,
-                delegate: SchemeSearchDelegate(schemes),
+                delegate: SchemeSearchDelegate(schemes, context),
               );
             },
           ),
@@ -161,15 +154,15 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
               child: DropdownButton<String>(
                 value: selectedCategory,
                 items: [
-                  'All',
-                  'Health',
-                  'Women',
-                  'Children',
+                  'allCategories',
+                  'healthCategory',
+                  'womenCategory',
+                  'childrenCategory',
                 ].map((String category) {
                   return DropdownMenuItem<String>(
                     value: category,
                     child: Text(
-                      category,
+                      AppLocalizations.of(context)!.translate(category),
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.blue.shade800,
@@ -197,7 +190,6 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
             Expanded(
               child: RefreshIndicator(
                 onRefresh: () async {
-                  // Simulate fetching new data
                   await Future.delayed(Duration(seconds: 2));
                   setState(() {});
                 },
@@ -231,7 +223,7 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
                           ),
                         ),
                         title: Text(
-                          scheme['title'],
+                          AppLocalizations.of(context)!.translate(scheme['title']),
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
@@ -241,12 +233,13 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              scheme['description'],
+                              AppLocalizations.of(context)!
+                                  .translate(scheme['description']),
                               style: TextStyle(fontSize: 14),
                             ),
                             SizedBox(height: 4),
                             Text(
-                              'Eligibility: ${scheme['eligibility']}',
+                              '${AppLocalizations.of(context)!.translate("eligibilityLabel")}: ${AppLocalizations.of(context)!.translate(scheme["eligibility"])}',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14,
@@ -262,7 +255,9 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
                               await launch(scheme['link']);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Could not open link')),
+                                SnackBar(
+                                    content: Text(AppLocalizations.of(context)!
+                                        .translate('couldNotOpenLink'))),
                               );
                             }
                           },
@@ -282,8 +277,9 @@ class _GovernmentSchemesPageState extends State<GovernmentSchemesPage> {
 
 class SchemeSearchDelegate extends SearchDelegate<String> {
   final List<Map<String, dynamic>> schemes;
+  final BuildContext context;
 
-  SchemeSearchDelegate(this.schemes);
+  SchemeSearchDelegate(this.schemes, this.context);
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -302,7 +298,7 @@ class SchemeSearchDelegate extends SearchDelegate<String> {
     return IconButton(
       icon: Icon(Icons.arrow_back),
       onPressed: () {
-        close(context, query); // Pass the current query as the result
+        close(context, query);
       },
     );
   }
@@ -311,16 +307,19 @@ class SchemeSearchDelegate extends SearchDelegate<String> {
   Widget buildResults(BuildContext context) {
     final results = schemes
         .where((scheme) =>
-            scheme['title'].toLowerCase().contains(query.toLowerCase()))
+            AppLocalizations.of(context)!
+                .translate(scheme['title'])
+                .toLowerCase()
+                .contains(query.toLowerCase()))
         .toList();
     return ListView.builder(
       itemCount: results.length,
       itemBuilder: (context, index) {
         final scheme = results[index];
         return ListTile(
-          title: Text(scheme['title']),
+          title: Text(AppLocalizations.of(context)!.translate(scheme['title'])),
           onTap: () {
-            close(context, scheme['title']); // Pass the selected scheme title
+            close(context, scheme['title']);
           },
         );
       },
@@ -331,16 +330,19 @@ class SchemeSearchDelegate extends SearchDelegate<String> {
   Widget buildSuggestions(BuildContext context) {
     final suggestions = schemes
         .where((scheme) =>
-            scheme['title'].toLowerCase().contains(query.toLowerCase()))
+            AppLocalizations.of(context)!
+                .translate(scheme['title'])
+                .toLowerCase()
+                .contains(query.toLowerCase()))
         .toList();
     return ListView.builder(
       itemCount: suggestions.length,
       itemBuilder: (context, index) {
         final scheme = suggestions[index];
         return ListTile(
-          title: Text(scheme['title']),
+          title: Text(AppLocalizations.of(context)!.translate(scheme['title'])),
           onTap: () {
-            query = scheme['title'];
+            query = AppLocalizations.of(context)!.translate(scheme['title']);
           },
         );
       },
