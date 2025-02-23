@@ -60,7 +60,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Choose Language'),
+        title: const Text('Choose Language',style: TextStyle(color: Colors.white,fontFamily: 'Product Sans Medium'),),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),

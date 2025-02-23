@@ -93,9 +93,11 @@ class _ProfilepageState extends State<Profilepage> {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacement(
+                  Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context) => HomeScreen()),
+                    (route) =>
+                        false, // This removes all previous routes from the stack
                   );
                 },
                 child: Icon(

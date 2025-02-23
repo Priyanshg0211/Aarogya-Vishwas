@@ -69,7 +69,12 @@ class AuthScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Auth Screen'),
+        backgroundColor: Colors.teal,
+        title: Text(
+          'Auth Screen',
+          style:
+              TextStyle(fontFamily: 'Product Sans Medium', color: Colors.white),
+        ),
       ),
       body: Center(
         child: Column(
