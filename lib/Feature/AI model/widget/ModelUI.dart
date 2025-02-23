@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
 
           _addMessage(ChatMessage(
             text: AppLocalizations.of(context)!
-                .translate('summarizeMedicalReport'),
+                .translate('Summarize this Medical Report'),
             isUser: true,
             imageFile: file,
             textStyle: messageTextStyle,
@@ -329,7 +329,7 @@ If applicable, mention if further clinical correlation is required.
               controller: _textController,
               decoration: InputDecoration(
                 hintText: AppLocalizations.of(context)!
-                    .translate('sendMessage'), // Localized hint text
+                    .translate('Send Message'), // Localized hint text
                 hintStyle: TextStyle(
                   fontFamily: 'Product Sans Mediumr',
                   fontWeight: FontWeight.w400,

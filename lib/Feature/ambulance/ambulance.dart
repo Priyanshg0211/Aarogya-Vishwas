@@ -2,22 +2,6 @@ import 'package:aarogya_vishwas/UI/Homescreen/Homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart'; // For making calls and sending messages
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Emergency Connect - India',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: EmergencyConnectPage(),
-    );
-  }
-}
 
 class EmergencyConnectPage extends StatelessWidget {
   // Sample data for ambulances in India
@@ -84,14 +68,15 @@ class EmergencyConnectPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.teal,
          leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back,color: Colors.white,),
           onPressed: () {
             Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (context) => HomeScreen()));
           },
         ),
-        title: Text('Emergency Connect - India'),
+        title: Text('Emergency Connect - India',style: TextStyle(color: Colors.white),),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -153,17 +138,23 @@ class EmergencyConnectPage extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () => _makeCall(phone),
-                  child: Text('Call'),
+                  child: Text('Call',style: TextStyle(color: Colors.white)),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
+                    backgroundColor: Colors.teal,
+                     shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                   ),
                 ),
                 SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () => _sendMessage(phone),
-                  child: Text('Message'),
+                  child: Text('Message',style: TextStyle(color: Colors.white),),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Colors.teal,
+                    shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                   ),
                 ),
               ],
