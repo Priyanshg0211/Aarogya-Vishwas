@@ -1,0 +1,2 @@
+C:/Users/gpriy/Downloads/Aarogya-Vishwas/android/app/.cxx/Debug/4d21m564/x86/CMakeFiles/edit_cache.dir
+C:/Users/gpriy/Downloads/Aarogya-Vishwas/android/app/.cxx/Debug/4d21m564/x86/CMakeFiles/rebuild_cache.dir
